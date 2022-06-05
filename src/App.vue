@@ -1,11 +1,19 @@
-<template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
-</template>
+ <template>
+  <div id="app" class="d-flex flex-column vh-100">
+    <AppHeader/>
+      <div class="body">
 
+              <router-view/>   
+    </div>
+  </div>       
+</template>
+<script setup>
+import AppHeader from "./components/AppHeader.vue";
+import {useStore} from "vuex"; //컴포넌트 아니면 쓸 수 없 
+
+const store = useStore();
+ store.dispatch("loadAuth");
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
